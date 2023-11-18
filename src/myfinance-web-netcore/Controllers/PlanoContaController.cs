@@ -1,20 +1,24 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using myfinance_web_netcore.Models;
+using myfinance_web_netcore.Services;
 
 namespace myfinance_web_netcore.Controllers;
 
 public class PlanoContaController : Controller
 {
     private readonly ILogger<PlanoContaController> _logger;
+    private readonly IPlanoContaService _planoContaService;
 
-    public PlanoContaController(ILogger<PlanoContaController> logger)
+    public PlanoContaController(ILogger<PlanoContaController> logger, IPlanoContaService planoContaService)
     {
         _logger = logger;
+        _planoContaService = planoContaService;
     }
 
     public IActionResult Index()
     {
+        ViewBag.ListaPlanoContas = _planoContaService.ListarPlanoContas();
         return View();
     }
 
