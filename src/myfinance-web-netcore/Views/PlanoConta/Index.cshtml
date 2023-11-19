@@ -4,7 +4,7 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<button type="button" class="btn btn-block btn-primary" onclick="Adicionar()">Novo</button>
+<button type="button" class="btn btn-block btn-primary" onclick="Novo()">Criar item de Plano de Conta</button>
 <br/><br/>
 
 <table class="table table-bordered">
@@ -17,7 +17,7 @@
     </tr>
 
     @{
-        foreach (var item in (List<PlanoContaModel>)ViewBag.ListItems) {
+        foreach (var item in (List<PlanoContaModel>)ViewBag.ListaPlanoContas) {
             <tr>
                 <td>@item.Id</td>
                 <td>@item.Descricao</td>
@@ -28,5 +28,18 @@
         }
     }
 </table>
+
+
+<script>
+    function Novo() {
+        window.location.href = "/PlanoConta/Cadastro";
+    }
+    function Atualizar(id){
+        window.location.href = "/PlanoConta/Cadastro/" + id;
+    }
+    function Excluir(id){
+        window.location.href = "/PlanoConta/Excluir/" + id;
+    }
+</script>
 
 
