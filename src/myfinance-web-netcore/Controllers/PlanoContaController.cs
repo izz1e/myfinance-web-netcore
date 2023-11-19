@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using myfinance_web_netcore.Models;
 using myfinance_web_netcore.Services;
@@ -10,13 +9,11 @@ namespace myfinance_web_netcore.Controllers;
 public class PlanoContaController : Controller
 {
     private readonly ILogger<PlanoContaController> _logger;
-    private readonly IMapper _mapper;
     private readonly IPlanoContaService _planoContaService;
 
-    public PlanoContaController(ILogger<PlanoContaController> logger, IMapper mapper,IPlanoContaService planoContaService)
+    public PlanoContaController(ILogger<PlanoContaController> logger, IPlanoContaService planoContaService)
     {
         _logger = logger;
-        _mapper = mapper;
         _planoContaService = planoContaService;
     }
 
@@ -25,8 +22,7 @@ public class PlanoContaController : Controller
     public IActionResult Index()
     {
         var listaPlanoConta = _planoContaService.ListarPlanoContas();
-        var lista = _mapper.Map<IEnumerable<PlanoContaModel>>(listaPlanoConta);
-        ViewBag.ListaPlanoContas = lista;
+        ViewBag.ListaPlanoContas = listaPlanoConta;
 
         return View();
     }
@@ -38,8 +34,8 @@ public class PlanoContaController : Controller
     {
         if (id != null)
         {
-            //var registro = _planoContaService.RetornarRegistro((int)id);
-            //return View(registro);
+            var registro = _planoContaService.RetornarRegistro((int)id);
+            return View(registro);
         }
         return View();
     }
@@ -49,7 +45,7 @@ public class PlanoContaController : Controller
     [Route("Cadastro/{id}")]
     public IActionResult Cadastro(PlanoContaModel model)
     {
-        //_planoContaService.Salvar(model);
+        _planoContaService.Salvar(model);
         return RedirectToAction("Index");
     }
 
@@ -57,7 +53,7 @@ public class PlanoContaController : Controller
     [Route("Excluir/{id}")]
     public IActionResult Excluir(int id)
     {
-        //_planoContaService.Excluir(id);
+        _planoContaService.Excluir(id);
         return RedirectToAction("Index");
     }
 
