@@ -14,10 +14,12 @@ namespace myfinance_web_netcore.Services
     {
         MyFinanceDBContext _myFinanceDbContext;
         private readonly IMapper _mapper;
-        public TransacaoService(MyFinanceDBContext myFinanceDBContext, IMapper mapper)
+        private readonly IPlanoContaService _planoContaService;
+        public TransacaoService(MyFinanceDBContext myFinanceDBContext, IMapper mapper, IPlanoContaService planoContaService)
         {
             _myFinanceDbContext = myFinanceDBContext;
             _mapper = mapper;
+            _planoContaService = planoContaService;
         }
 
         public IEnumerable<TransacaoModel> ListarTransacoes()
@@ -36,6 +38,8 @@ namespace myfinance_web_netcore.Services
          void ITransacaoService.Salvar(TransacaoModel model)
         {
             var item = _mapper.Map<Transacao>(model);
+            item.Tipo = _planoContaService.RetornarRegistro(model.PlanoContaId).Tipo;
+            
             if (item.Id == null)
             {
                 _myFinanceDbContext.Transacao.Add(item);
