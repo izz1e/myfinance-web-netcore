@@ -9,9 +9,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MyFinanceDBContext>();
 //builder.Services.AddAutoMapper(AssemblyUtil.GetCurrentAssemblies());
 builder.Services.AddAutoMapper(typeof(PlanoContaMap));
+builder.Services.AddAutoMapper(typeof(TransacaoMap));
 //Services
 builder.Services.AddTransient<IPlanoContaService, PlanoContaService>();
-//Repositories
+builder.Services.AddTransient<ITransacaoService, TransacaoService>();
+
 
 
 var app = builder.Build();
