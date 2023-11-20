@@ -1,26 +1,30 @@
 ﻿@{
-    ViewData["Title"] = "Listagem de plano de contas";
+    ViewData["Title"] = "Listagem de transacões";
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<button type="button" class="btn btn-block btn-primary" onclick="Novo()">Criar item de Plano de Conta</button>
+<button type="button" class="btn btn-block btn-primary" onclick="Novo()">Registrar transações</button>
 <br/><br/>
 
 <table class="table table-bordered">
     <tr>
         <th>Id</th>
-        <th>Descrição</th>
+        <th>Historico</th>
         <th>Tipo</th>
+        <th>Valor</th>
+        <th>Data</th>
         <th>#</th>
         <th>#</th>
     </tr>
 
     @{
-        foreach (var item in (List<PlanoContaModel>)ViewBag.ListaPlanoContas) {
+        foreach (var item in (List<TransacaoModel>)ViewBag.ListarTransacoes) {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.Descricao</td>
+                <td>@item.Historico</td>
+                <td>@item.Valor</td>
+                <td>@item.Data</td>
                 <td>@item.Tipo</td>
                 <td><button type="button" class="btn btn-block btn-outline-warning" onclick="Atualizar(@item.Id.ToString())">Atualizar</button></td>
                 <td><button type="button" class="btn btn-block btn-outline-danger" onclick="Excluir(@item.Id.ToString())">Excluir</button></td>
@@ -32,13 +36,13 @@
 
 <script>
     function Novo() {
-        window.location.href = "/PlanoConta/Cadastro";
+        window.location.href = "/Transacao/Cadastro";
     }
     function Atualizar(id){
-        window.location.href = "/PlanoConta/Cadastro/" + id;
+        window.location.href = "/Transacao/Cadastro/" + id;
     }
     function Excluir(id){
-        window.location.href = "/PlanoConta/Excluir/" + id;
+        window.location.href = "/Transacao/Excluir/" + id;
     }
 </script>
 
