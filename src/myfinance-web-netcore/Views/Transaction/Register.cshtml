@@ -1,0 +1,52 @@
+@model TransactionModel
+
+@{
+    ViewData["Title"] = "Transaction Register";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-controller="Transaction" asp-action="Register" method="post">
+    <div class="container">
+
+        <div class="mb-3">
+            <label class="form-label" for="txtData">Date</label>
+            <input type="date" id="txtData" class="form-control" asp-for="Date" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="txtValue">Value</label>
+            <input type="number" id="txtValue" class="form-control" asp-for="Value" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="txtData">FinancialRecord Item</label>
+            @Html.DropDownListFor(m => m.FinancialRecordId, Model.FinancialRecords, new { @class="from-select"})
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="txtDetail">Detail</label>
+            <input type="hidden" id="txtId" class="form-control" asp-for="Id" />
+            <input type="text" id="txtDetail" class="form-control" asp-for="Detail" />
+        </div>
+        
+        @*<div class="mb-3">
+            <label>@Html.RadioButtonFor(m => m.Type, "E") Expense </label>
+            <label>@Html.RadioButtonFor(m => m.Type, "I") Income </label>
+        </div>*@
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary btn-lg">Save</button>
+            <button type="button" class="btn btn-secondary btn-lg" onclick="Back()">Cancel</button>
+        </div>
+
+    </div>
+</form>
+
+
+<script>
+    function Back() {
+        console.log("Back: ");
+        window.location.href = "/Transaction/Index";
+    }
+</script>

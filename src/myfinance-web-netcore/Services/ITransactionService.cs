@@ -7,11 +7,11 @@ using myfinance_web_netcore.Models;
 
 namespace myfinance_web_netcore.Services
 {
-    public interface IPlanoContaService
+    public interface ITransactionService
     {
-        IEnumerable<PlanoContaModel> ListarPlanoContas();
-        PlanoContaModel RetornarRegistro(int id);
-        void Salvar(PlanoContaModel model);
-        void Excluir(int id);
+        IEnumerable<TransactionModel> ListTransactions();
+        TransactionModel ReturnRegister(int id);
+        void Save(TransactionModel model);
+        void Delete(int id);
     }
 }

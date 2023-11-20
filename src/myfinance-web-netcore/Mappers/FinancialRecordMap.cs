@@ -6,10 +6,10 @@ using AutoMapper;
 
 namespace myfinance_web_netcore.Mappers
 {
-    public class TransacaoMap : Profile
+    public class FinancialRecordMap : Profile
     {
-        public TransacaoMap(){
-            CreateMap<Domain.Transacao, Models.TransacaoModel>().ReverseMap();
+        public FinancialRecordMap(){
+            CreateMap<Domain.FinancialRecord, Models.FinancialRecordModel>().ReverseMap();
         }
     }
 }

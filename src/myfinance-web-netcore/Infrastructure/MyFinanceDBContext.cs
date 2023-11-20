@@ -5,8 +5,8 @@ namespace myfinance_web_netcore.Infrastructure
 {
     public class MyFinanceDBContext : DbContext
     {
-        public DbSet<PlanoConta> PlanoConta { get; set; }
-        public DbSet<Transacao> Transacao { get; set; }
+        public DbSet<FinancialRecord> FinancialRecord { get; set; }
+        public DbSet<Transaction> Transaction { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

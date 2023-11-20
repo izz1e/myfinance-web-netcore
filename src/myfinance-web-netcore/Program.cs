@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic;
 using myfinance_web_netcore.Infrastructure;
 using myfinance_web_netcore.Mappers;
 using myfinance_web_netcore.Services;
@@ -8,11 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MyFinanceDBContext>();
 //builder.Services.AddAutoMapper(AssemblyUtil.GetCurrentAssemblies());
-builder.Services.AddAutoMapper(typeof(PlanoContaMap));
-builder.Services.AddAutoMapper(typeof(TransacaoMap));
+builder.Services.AddAutoMapper(typeof(FinancialRecordMap));
+builder.Services.AddAutoMapper(typeof(TransactionMap));
 //Services
-builder.Services.AddTransient<IPlanoContaService, PlanoContaService>();
-builder.Services.AddTransient<ITransacaoService, TransacaoService>();
+builder.Services.AddTransient<IFinancialRecordService, FinancialRecordService>();
+builder.Services.AddTransient<ITransactionService, TransactionService>();
 
 
 
