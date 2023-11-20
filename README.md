@@ -6,7 +6,7 @@ A class project for Software Implementation and Evolution Practices from the Sof
 
 ### Architecture
 
--- image --
+![MyFinance Architecture](./MyFinanceWeb-archi.png)
 
 -----
 ### Requirements
