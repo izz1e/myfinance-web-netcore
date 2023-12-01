@@ -1,4 +1,4 @@
-# My Finance Web 
+# My Finance Web
 
 A class project for Software Implementation and Evolution Practices from the Software Engineering Postgraduate Degree course at PUC Minas.
 
@@ -9,11 +9,22 @@ A class project for Software Implementation and Evolution Practices from the Sof
 ![MyFinance Architecture](./MyFinanceWeb-archi.png)
 
 -----
+
 ### Requirements
 
 Packages:
-- dotnet add package Microsoft.EntityFrameworkCore --version 7.0.13
-- dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 7.0.13
-- dotnet add package AutoMapper --version 12.0.1
-- dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection  --version 12.0.1
+
+- `dotnet add package Microsoft.EntityFrameworkCore --version 7.0.13`
+- `dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 7.0.13`
+- `dotnet add package AutoMapper --version 12.0.1`
+- `dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection  --version 12.0.1`
+
+### How to use
+
+- Clone the repo;
+- Navigate to */src* folder, then *myfinance-web-netcore*;
+- Run `dotnet restore`;
+- Run` dotnet run`;
+- Click the link that console will print;
+- You're good to go! 😊
 
